@@ -1,0 +1,46 @@
+﻿@model IEnumerable<YemekPoseti.Models.StockModel>
+
+@{
+    ViewBag.Title = "StockListele";
+    Layout = "~/Views/Shared/_LayoutAYonetici.cshtml";
+}
+
+<h2>StockListele</h2>
+
+<p>
+    @Html.ActionLink("Create New", "StockEY")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StockID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductAmount)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.StockID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductAmount)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "StockEY", new { id = item.StockID }) |
+        @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+        @Html.ActionLink("Delete", "StockDelete", new { id = item.StockID })
+    </td>
+</tr>
+}
+
+</table>

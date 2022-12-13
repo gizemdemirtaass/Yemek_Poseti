@@ -1,0 +1,78 @@
+﻿@model YemekPoseti.Models.UserLogin
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+<div class="form-horizontal">
+    <h4>User Login</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label for="username">UserName</label>
+        @*@Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        @*@Html.LabelFor(model => model.Password1, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Password1, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Password1, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Giriş" class="btn btn-default" />
+        </div>
+    </div>
+
+    @*<div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <a href="@Url.Action("YeniUser","Register")"></a>
+                <button type="submit" value="Kayıt Ol" class="btn btn-default" />
+        </div> 
+    </div>*@
+    <!--<div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <a href="@Url.Action("YeniUser","Register")"><input type="submit" value="Kayıt Ol!"</a>-->
+            @*<input type="submit" value="Register" class="btn btn-default" />*@
+        <!--</div>
+    </div>-->
+
+
+        <div class="card-footer text-center py-3">
+            <a class="btn btn-primary" href="@Url.Action("YeniUser","Register")">Kayıt Ol!</a>
+        </div>
+
+    @*<a href="http://okandiyebiri.com"><input type="submit" value="Gönder" /></a>*@
+
+    <div>
+        @Html.ActionLink("Back to List", "Home", "Web")
+    </div>
+
+
+</div>
+
+
+}
+
+

@@ -1,0 +1,77 @@
+﻿@model YemekPoseti.Models.CMaster
+@{
+    ViewBag.Title = "YeniAdmin";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<h2>Create Admin Account</h2>
+@using (Html.BeginForm()) //crud işlemlerinde begin form kullanmak zorundayız ve antifogerytoken
+{
+    @Html.AntiForgeryToken() //her form için id oluşturuyor!!
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" }) 
+        <div class="form-group">
+            <label for="username">Name</label>
+            @*@Html.LabelFor(model => model.CName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })  
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="=form group">
+            <label for="username">User Name</label>
+            @*@Html.LabelFor(model => model.CUsername, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" }) 
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="username">User Password</label>
+            @*@Html.LabelFor(model => model.CPassword, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+
+                @Html.EditorFor(model => model.UserPassword, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="username">User Mail</label>
+            @*@Html.LabelFor(model => model.CUserMail, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+
+                @Html.EditorFor(model => model.UserMail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserMail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="username">User Address</label>
+            @*@Html.LabelFor(model => model.CUserAddress, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+
+                @Html.EditorFor(model => model.UserAddress, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserAddress, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+
+        <div>
+            @Html.ActionLink("Back to List", "Login", "AdminLogin")
+
+        </div>
+    </div>
+}
+
